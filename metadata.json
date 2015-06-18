@@ -1,0 +1,14 @@
+{
+  "name": "puppet-mcollective",
+  "version": "0.1.0",
+  "author": "bhaymore",
+  "summary": "A module to install mcollective server and client with activeMQ middleware.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/localmotors/puppet-mcollective.git",
+  "project_page": "https://github.com/localmotors/puppet-mcollective",
+  "issues_url": "https://github.com/localmotors/puppet-mcollective/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
