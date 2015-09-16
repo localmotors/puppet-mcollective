@@ -7,7 +7,7 @@ class mcollective::params {
   $keystore_password        = $mcollective_password
 
   # certificates
-  $ca_certificate  = "/var/lib/puppet/ssl/ca/ca_crt.pem"                      # uses the puppet ca cert by default
+  $ca_certificate  = '/var/lib/puppet/ssl/ca/ca_crt.pem'                      # uses the puppet ca cert by default
   $activemq_cert   = "/var/lib/puppet/ssl/certs/${::clientcert}.pem"          # uses the puppet client cert by default
   $activemq_key    = "/var/lib/puppet/ssl/private_keys/${::cclientcert}.pem"  # uses the puppet client key by default
   $server_cert     = "/var/lib/puppet/ssl/certs/${::clientcert}.pem"
@@ -26,9 +26,9 @@ class mcollective::params {
   $plugin.activemq.pool.1.ssl = '1'
   $plugin.activemq.pool.1.ssl.fallback = '0'
 
-  $plugin.activemq.pool.1.ssl.ca = "/etc/mcollective/certs/ca.pem"
-  $plugin.activemq.pool.1.ssl.cert = "/etc/mcollective/certs/server_public.pem"
-  $plugin.activemq.pool.1.ssl.key = "/etc/mcollective/certs/server_private.pem"
+  $plugin.activemq.pool.1.ssl.ca = '/etc/mcollective/certs/ca.pem'
+  $plugin.activemq.pool.1.ssl.cert = '/etc/mcollective/certs/server_public.pem'
+  $plugin.activemq.pool.1.ssl.key = '/etc/mcollective/certs/server_private.pem'
 
   $securityprovider = 'ssl'
   $plugin.ssl_client_cert_dir = '/etc/mcollective/clients'

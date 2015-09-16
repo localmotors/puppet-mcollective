@@ -28,7 +28,7 @@ class mcollective::activemq::keystores (
   }
   file {"${activemq_confdir}/ssl_credentials":
     ensure => directory,
-    mode   => 0700,
+    mode   => '0700',
   }
   file {"${activemq_confdir}/ssl_credentials/activemq_certificate.pem":
     ensure => file,
@@ -60,12 +60,12 @@ class mcollective::activemq::keystores (
 
   # Keystore with ActiveMQ cert and private key
   java_ks { 'activemq_cert:keystore':
-    ensure       => latest,
-    certificate  => "${activemq_confdir}/ssl_credentials/activemq_certificate.pem",
-    private_key  => "${activemq_confdir}/ssl_credentials/activemq_private.pem",
-    target       => "${activemq_confdir}/keystore.jks",
-    password     => $keystore_password,
-    require      => [
+    ensure      => latest,
+    certificate => "${activemq_confdir}/ssl_credentials/activemq_certificate.pem",
+    private_key => "${activemq_confdir}/ssl_credentials/activemq_private.pem",
+    target      => "${activemq_confdir}/keystore.jks",
+    password    => $keystore_password,
+    require     => [
       File["${activemq_confdir}/ssl_credentials/activemq_private.pem"],
       File["${activemq_confdir}/ssl_credentials/activemq_certificate.pem"]
     ],
@@ -80,13 +80,13 @@ class mcollective::activemq::keystores (
   file {"${activemq_confdir}/keystore.jks":
     owner   => $activemq_user,
     group   => $activemq_user,
-    mode    => 0600,
+    mode    => '0600',
     require => Java_ks['activemq_cert:keystore'],
   }
   file {"${activemq_confdir}/truststore.jks":
     owner   => $activemq_user,
     group   => $activemq_user,
-    mode    => 0600,
+    mode    => '0600',
     require => Java_ks['activemq_ca:truststore'],
   }
 

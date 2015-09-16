@@ -12,39 +12,39 @@ class mcollective::server (
     ensure => 'installed',
   }
   file { '/etc/mcollective/ssl/ca.pem':
-    owner => 'root',
-    group => 'root',
-    mode => '640',
-    source => $ca_certificate,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0640',
+    source  => $ca_certificate,
     require => Package['mcollective'],
   }
   file { '/etc/mcollective/ssl/server_public.pem':
-    owner => 'root',
-    group => 'root',
-    mode => '640',
-    source => $server_cert,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0640',
+    source  => $server_cert,
     require => Package['mcollective'],
   }
   file { '/etc/mcollective/ssl/server_private.pem':
-    owner => 'root',
-    group => 'root',
-    mode => '600',
-    source => $server_key,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600',
+    source  => $server_key,
     require => Package['mcollective'],
   }
   file { '/etc/mcollective/clients/client_cert.pem':
-    owner => 'root',
-    group => 'root',
-    mode => '640',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0640',
     content => $client_cert,
     require => Package['mcollective'],
   }
-  file{"/etc/mcollective/facts.yaml":
+  file{'/etc/mcollective/facts.yaml':
       owner    => root,
       group    => root,
-      mode     => 400,
+      mode     => '0400',
       loglevel => debug, # reduce noise in Puppet reports
-      content  => inline_template("<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime_seconds|timestamp|free)/ }.to_yaml %>"), # exclude rapidly changing facts
-      require => Package['mcollective'],
+      content  => inline_template('<%= scope.to_hash.reject { |k,v| k.to_s =~ /(uptime_seconds|timestamp|free)/ }.to_yaml %>'), # exclude rapidly changing facts
+      require  => Package['mcollective'],
     }
 }
