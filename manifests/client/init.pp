@@ -4,10 +4,8 @@ class mcollective::client (
   $server_key      = $mcollective::params::server_key,      # uses the puppet client key by default
   $client_cert     = $mcollective::params::client_cert,
   $client_key      = $mcollective::params::client_key,
-  
+
   ) inherits mcollective::params {
-  
-  package { 'mcollective-client':
-    ensure => 'installed',
-  }
+
+  ensure_packages('mcollective-client')
 }

@@ -1,5 +1,5 @@
 class mcollective::params {
-  
+
   # logins
   $mcollective_username     = 'mcollective'
   $mcollective_password     = undef
@@ -7,13 +7,16 @@ class mcollective::params {
   $keystore_password        = $mcollective_password
 
   # certificates
-  $ca_certificate  = '/var/lib/puppet/ssl/ca/ca_crt.pem'                      # uses the puppet ca cert by default
-  $activemq_cert   = "/var/lib/puppet/ssl/certs/${::clientcert}.pem"          # uses the puppet client cert by default
-  $activemq_key    = "/var/lib/puppet/ssl/private_keys/${::cclientcert}.pem"  # uses the puppet client key by default
-  $server_cert     = "/var/lib/puppet/ssl/certs/${::clientcert}.pem"
-  $server_key      = "/var/lib/puppet/ssl/private_keys/${::cclientcert}.pem"
-  $client_cert     = undef
-  $client_key      = undef
+  $ca_certificate           = '/var/lib/puppet/ssl/ca/ca_crt.pem'                      # uses the puppet ca cert by default
+  $activemq_cert            = "/var/lib/puppet/ssl/certs/${::clientcert}.pem"          # uses the puppet client cert by default
+  $activemq_key             = "/var/lib/puppet/ssl/private_keys/${::clientcert}.pem"   # uses the puppet client key by default
+  $server_cert              = "/var/lib/puppet/ssl/certs/${::clientcert}.pem"
+  $server_key               = "/var/lib/puppet/ssl/private_keys/${::clientcert}.pem"
+  $client_cert              = undef
+  $client_key               = undef
+
+  $activemq_confdir         = '/etc/activemq'
+  $activemq_user            = 'activemq'
 
   # connector settings
   $connector          = 'activemq'

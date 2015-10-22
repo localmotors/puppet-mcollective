@@ -1,4 +1,8 @@
-define mcollective::server::setting ($setting = $title, $target = '/etc/mcollective/server.cfg', $value) {
+define mcollective::server::setting (
+    $value,
+    $setting = $title,
+    $target = '/etc/mcollective/server.cfg',
+  ) {
   validate_re($target, '\/(plugin\.d\/[a-z]+|server)\.cfg\Z')
   $regex_escaped_setting = regsubst($setting, '\.', '\\.', 'G') # assume dots are the only regex-unsafe chars in a setting name.
 

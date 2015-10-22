@@ -7,10 +7,9 @@ class mcollective::server (
   $client_key      = $mcollective::params::client_key,
 
   ) inherits mcollective::params {
+
+  ensure_packages('mcollective')
   
-  package { 'mcollective':
-    ensure => 'installed',
-  }
   file { '/etc/mcollective/ssl/ca.pem':
     owner   => 'root',
     group   => 'root',

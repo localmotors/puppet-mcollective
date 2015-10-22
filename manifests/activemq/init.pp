@@ -1,7 +1,13 @@
-class mcollective::activemq inherits mcollective::params {
-  package { 'activemq':
-    ensure => installed,
-  }
+class mcollective::activemq (
+  $mcollective_username    = $mcollective::params::mcollective_username,
+  $mcollective_password    = $mcollective::params::mcollective_password,
+  $activemq_admin_password = $mcollective::params::activemq_admin_password,
+  $keystore_password       = $mcollective::params::keystore_password,
+
+  ) inherits mcollective::params {
+
+  ensure_packages('activemq')
+  
   file { '/etc/activemq/instances-available/main/activemq.xml':
     owner   => 'root',
     group   => 'root',

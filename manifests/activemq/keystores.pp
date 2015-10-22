@@ -1,14 +1,14 @@
-# /etc/puppet/modules/activemq/manifests/keystores.pp
 class mcollective::activemq::keystores (
-  $keystore_password,
+  $keystore_password, # required
 
   # User must put these files in the module, or provide other URLs
-  $ca = $ca_certificate,
-  $cert = $activemq_cert,
-  $private_key = $activemq_key,
+  $ca                 = $mcollective::params::ca_certificate,
+  $cert               = $mcollective::params::activemq_cert,
+  $private_key        = $mcollective::params::activemq_key,
 
-  $activemq_confdir = '/etc/activemq',
-  $activemq_user = 'activemq',
+  $activemq_confdir   = $mcollective::params::activemq_confdir,
+  $activemq_user      = $mcollective::params::activemq_user,
+
   ) inherits mcollective::params {
 
   # ----- Restart ActiveMQ if the SSL credentials ever change       -----
@@ -66,8 +66,7 @@ class mcollective::activemq::keystores (
     target      => "${activemq_confdir}/keystore.jks",
     password    => $keystore_password,
     require     => [
-      File["${activemq_confdir}/ssl_credentials/activemq_private.pem"],
-      File["${activemq_confdir}/ssl_credentials/activemq_certificate.pem"]
+      File["${activemq_confdir}/ssl_credentials/activemq_private.pem","${activemq_confdir}/ssl_credentials/activemq_certificate.pem"],
     ],
   }
 

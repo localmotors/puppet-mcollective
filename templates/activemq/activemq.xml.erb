@@ -127,8 +127,8 @@
         </transportConnectors>
         <sslContext>
           <sslContext
-           keyStore="keystore.jks" keyStorePassword="secret"
-           trustStore="truststore.jks" trustStorePassword="secret"
+           keyStore="keystore.jks" keyStorePassword="<@= @keystore_password %>"
+           trustStore="truststore.jks" trustStorePassword="<@= @keystore_password %>"
           />
         </sslContext>
     </broker>
